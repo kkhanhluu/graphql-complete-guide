@@ -10,9 +10,6 @@ export const Query = {
           {
             name_contains: args.query,
           },
-          {
-            email_contains: args.query,
-          },
         ],
       };
     }
@@ -22,9 +19,9 @@ export const Query = {
 
   posts(parent, args, { prisma }, info) {
     const opArgs = {
-      where: {
-        published: true,
-      },
+      // where: {
+      //   published: true,
+      // },
     };
 
     if (args.query) {
