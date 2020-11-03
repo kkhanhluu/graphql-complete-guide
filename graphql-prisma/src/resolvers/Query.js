@@ -2,7 +2,10 @@ import { getUserId } from '../utils/getUserId';
 
 export const Query = {
   users(parent, args, { prisma }, info) {
-    const opArgs = {};
+    const opArgs = {
+      first: args.first,
+      skip: args.skip,
+    };
 
     if (args.query) {
       opArgs.where = {
@@ -22,6 +25,8 @@ export const Query = {
       // where: {
       //   published: true,
       // },
+      skip: args.skip,
+      first: args.first,
     };
 
     if (args.query) {
