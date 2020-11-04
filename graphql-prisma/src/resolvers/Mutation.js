@@ -1,6 +1,7 @@
 import { generateToken } from '../utils/generateToken';
 import { getUserId } from '../utils/getUserId';
 import { hashPassword } from '../utils/hashPassword';
+import bcrypt from 'bcryptjs';
 
 export const Mutation = {
   async login(parent, args, { prisma }, info) {
@@ -43,13 +44,13 @@ export const Mutation = {
 
     return prisma.mutation.deleteUser({ where: { id: userId } }, info);
   },
-  updateUser(parent, args, { prisma, request }, info) {
+  async updateUser(parent, args, { prisma, request }, info) {
     const userId = getUserId(request);
 
     if (typeof args.data.password === 'string') {
-      args.data.password = await hashPassword(args.data.password); 
+      args.data.password = await hashPassword(args.data.password);
     }
-    
+
     return prisma.mutation.updateUser(
       { where: { id: userId }, data: args.data },
       info

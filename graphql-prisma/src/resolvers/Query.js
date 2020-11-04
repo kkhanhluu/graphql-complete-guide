@@ -5,6 +5,7 @@ export const Query = {
     const opArgs = {
       first: args.first,
       skip: args.skip,
+      orderBy: args.orderBy,
     };
 
     if (args.query) {
@@ -27,6 +28,7 @@ export const Query = {
       // },
       skip: args.skip,
       first: args.first,
+      orderBy: args.orderBy,
     };
 
     if (args.query) {
@@ -52,6 +54,10 @@ export const Query = {
           id: userId,
         },
       },
+      skip: args.skip,
+      first: args.first,
+      after: args.after,
+      orderBy: args.orderBy,
     };
 
     if (args.query) {
@@ -69,7 +75,13 @@ export const Query = {
   },
 
   comments(parent, args, { prisma }, info) {
-    return prisma.query.comments(null, info);
+    const opArgs = {
+      first: args.first,
+      skip: args.skip,
+      after: args.after,
+      orderBy: args.orderBy,
+    };
+    return prisma.query.comments(opArgs, info);
   },
 
   async post(parent, args, { prisma, request }, info) {
