@@ -1,2 +1,4 @@
 /graphql-basics/node_modules
 /graphql-prisma/node_modules
+/graphql-prisma/dist
+/graphql-prisma/config
