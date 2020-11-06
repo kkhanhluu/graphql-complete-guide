@@ -3,3 +3,5 @@
 /graphql-prisma/dist
 /graphql-prisma/config
 /apollo-client/node_modules
+/apollo-client/.cache
+/apollo-client/dist
