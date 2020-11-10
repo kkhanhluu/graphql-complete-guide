@@ -24,9 +24,9 @@ export const Query = {
 
   posts(parent, args, { prisma }, info) {
     const opArgs = {
-      // where: {
-      //   published: true,
-      // },
+      where: {
+        published: true,
+      },
       skip: args.skip,
       first: args.first,
       orderBy: args.orderBy,
